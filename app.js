@@ -4,18 +4,6 @@ const numberOfGames = 5;
 let gamesPlayed = 0;
 
 
-const rockButton = document.querySelector('#rock');
-const paperButton = document.querySelector('#paper');
-const scissorsButton = document.querySelector('#scissors');
-
-rockButton.addEventListener("click", () => {
-    const playerSelection = "Rock";
-    const computerSelection = computerPlay();
-    
-})
-
-
-
 function computerPlay() {
     const random = Math.floor(Math.random() * 3);
     if (random === 0) {
