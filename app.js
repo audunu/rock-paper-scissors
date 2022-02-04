@@ -6,9 +6,9 @@ const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 
-rockButton.addEventListener("click", click("Rock");
-paperButton.addEventListener("click", click("Paper");
-scissorsButton.addEventListener("click", click("Scissors");
+rockButton.addEventListener("click", click("Rock"));
+paperButton.addEventListener("click", click("Paper"));
+scissorsButton.addEventListener("click", click("Scissors"));
 
 function click(selection) {
     if (playerScore < 3 || computerScore < 3) {
