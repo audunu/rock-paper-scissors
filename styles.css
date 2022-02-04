@@ -4,6 +4,15 @@
     margin: 0;
 }
 
+header {
+    text-align: center;
+    padding: 2em;
+}
+
+.text {
+    text-align: center;
+}
+
 img {
     width: 100%;
     height: 100%;
@@ -12,5 +21,23 @@ img {
 button {
     width: 12%;
     height: 12%;
+    
+}
+
+.buttons {
     display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em;
+}
+
+.resultbox div {
+    text-align: center;
+    font-size: 3em;
 }
