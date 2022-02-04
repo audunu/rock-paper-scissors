@@ -1,6 +1,6 @@
 const selectionButtons = document.querySelectorAll('[data-selection]')
-const computerScore = document.querySelector('[data-computer-score]')
-const playerScore = document.querySelector('[data-player-score]')
+let computerScore = document.querySelector('[data-computer-score]')
+let playerScore = document.querySelector('[data-player-score]')
 let playerChoice = document.querySelector('[data-playerChoice]')
 let computerChoice = document.querySelector('[data-computerChoice]')
 
@@ -38,13 +38,22 @@ function makeSelection(selectionName) {
     return
   } else if (winner) {
     playerScore.innerText = parseInt(playerScore.innerText) + 1
-
-    // if (playerScore.innerText === 3) {
-    //   alert('you win, score will reset')
-    // }
+    if (playerScore.innerText == 3) {
+      alert('you won')
+      restartGame()
+    }
   } else if (!winner) {
     computerScore.innerText = parseInt(computerScore.innerText) + 1
+    if (computerScore.innerText == 3) {
+      alert('computer won')
+      restartGame()
+    }
   }
+}
+
+function restartGame() {
+  playerScore.innerText = 0
+  computerScore.innerText = 0
 }
 
 function isWinner(playerSelection, computerSelection) {
