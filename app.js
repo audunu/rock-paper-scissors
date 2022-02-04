@@ -1,7 +1,42 @@
 let playerScore = 0
 let computerScore = 0
-const numberOfGames = 5
-let gamesPlayed = 0
+
+const rockButton = document.querySelector('#rock')
+const paperButton = document.querySelector('#paper')
+const scissorsButton = document.querySelector('#scissors')
+const playerScoreElement = document.querySelector('.playerScore')
+const computerScoreElement = document.querySelector('.computerScore')
+
+rockButton.addEventListener('click', clicked('Rock'))
+paperButton.addEventListener('click', clicked('Paper'))
+scissorsButton.addEventListener('click', clicked('Scissors'))
+
+function clicked(selection) {
+  if (playerScore < 3 || computerScore < 3) {
+    const playerSelection = selection
+    const computerSelection = computerPlay()
+
+    if (playerSelection === computerSelection) {
+      console.log(`draw. play again! both played ${playerSelection}`)
+    } else if (
+      (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+      (playerSelection === 'Paper' && computerSelection === 'Rock') ||
+      (playerSelection === 'Scissors' && computerSelection === 'Paper')
+    ) {
+      playerScore += 1
+      playerScoreElement.innerHTML = playerScore
+      console.log(`you win! ${playerSelection} beats ${computerSelection}`)
+    } else {
+      computerScore += 1
+      computerScoreElement.innerHTML = computerScore
+      console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
+    }
+  } else if (playerScore === 3) {
+    console.log('player wins total')
+  } else if (computerScore === 3) {
+    console.log('computer wins total')
+  }
+}
 
 function computerPlay() {
   const random = Math.floor(Math.random() * 3)
@@ -13,43 +48,3 @@ function computerPlay() {
     return 'Scissors'
   }
 }
-
-function capitalizeFirst(str) {
-  const str2 = str.toLowerCase()
-  const str3 = str2.charAt(0).toUpperCase() + str2.slice(1)
-  return str3
-}
-
-function playRound(playerSelection, computerSelection) {
-  playerSelection = capitalizeFirst(playerSelection)
-  gamesPlayed += 1
-  if (playerSelection === computerSelection) {
-    console.log(`draw. play again! both played ${playerSelection}`)
-  } else if (
-    (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
-    (playerSelection === 'Paper' && computerSelection === 'Rock') ||
-    (playerSelection === 'Scissors' && computerSelection === 'Paper')
-  ) {
-    playerScore += 1
-    console.log(`you win! ${playerSelection} beats ${computerSelection}`)
-  } else {
-    computerScore += 1
-    console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
-  }
-}
-
-function game() {
-  while (gamesPlayed < numberOfGames) {
-    const playerChoice = prompt('Rock, Paper or Scissors?')
-    playRound(playerChoice, computerPlay())
-  }
-  if (playerScore < computerScore) {
-    console.log(`computer wins ${computerScore} vs ${playerScore}`)
-  } else if (computerScore < playerScore) {
-    console.log(`player wins ${playerScore} vs ${computerScore}`)
-  } else {
-    console.log(`it's a draw! ${playerScore} vs ${computerScore}`)
-  }
-}
-
-game()

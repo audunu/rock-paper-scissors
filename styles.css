@@ -2,6 +2,19 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 2em;
+    background-color: black;
+    margin: 0 20px 0 20px;
+}
+
+.text {
+    text-align: center;
+    padding-top: 2em;
 }
 
 img {
@@ -12,5 +25,29 @@ img {
 button {
     width: 12%;
     height: 12%;
+    
+}
+
+.buttons {
     display: flex;
+    justify-content: center;
+    gap: 1em;
+    padding-bottom: 2em;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em;
+}
+
+.resultbox div {
+    text-align: center;
+    font-size: 3em;
+}
+
+main {
+    background-color: rgb(20, 8, 8);
+    margin: 0 20px 0 20px;
 }
