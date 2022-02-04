@@ -10,10 +10,24 @@ const computerScoreElement = document.querySelector('.computerScore')
 rockButton.addEventListener('click', () => {
   clicked('Rock')
 })
-paperButton.addEventListener('click', clicked('Paper'))
-scissorsButton.addEventListener('click', clicked('Scissors'))
+paperButton.addEventListener('click', () => {
+  clicked('Paper')
+})
+scissorsButton.addEventListener('click', () => {
+  clicked('Scissors')
+})
+
+function restart() {
+  playerScore = 0
+  computerScore = 0
+}
 
 function clicked(selection) {
+  if (playerScore === 3 || computerScore === 3) {
+    alert('game over')
+    return restart()
+  }
+
   if (playerScore < 3 || computerScore < 3) {
     const playerSelection = selection
     const computerSelection = computerPlay()
@@ -33,10 +47,6 @@ function clicked(selection) {
       computerScoreElement.innerHTML = computerScore
       console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
     }
-  } else if (playerScore === 3) {
-    console.log('player wins total')
-  } else if (computerScore === 3) {
-    console.log('computer wins total')
   }
 }
 
