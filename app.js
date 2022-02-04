@@ -1,62 +1,57 @@
-let playerScore = 0
-let computerScore = 0
+const selectionButtons = document.querySelectorAll('[data-selection]')
+const computerScore = document.querySelector('[data-computer-score]')
+const playerScore = document.querySelector('[data-player-score]')
+let playerChoice = document.querySelector('[data-playerChoice]')
+let computerChoice = document.querySelector('[data-computerChoice]')
 
-const rockButton = document.querySelector('#rock')
-const paperButton = document.querySelector('#paper')
-const scissorsButton = document.querySelector('#scissors')
-const playerScoreElement = document.querySelector('.playerScore')
-const computerScoreElement = document.querySelector('.computerScore')
+const overView = [
+  {
+    name: 'rock',
+    beats: 'scissors',
+  },
+  {
+    name: 'paper',
+    beats: 'rock',
+  },
+  {
+    name: 'scissors',
+    beats: 'paper',
+  },
+]
 
-rockButton.addEventListener('click', () => {
-  clicked('Rock')
+selectionButtons.forEach(element => {
+  element.addEventListener('click', e => {
+    const selectionName = element.dataset.selection
+    const correctObject = overView.find(element => element.name === selectionName)
+    makeSelection(correctObject)
+  })
 })
-paperButton.addEventListener('click', () => {
-  clicked('Paper')
-})
-scissorsButton.addEventListener('click', () => {
-  clicked('Scissors')
-})
 
-function restart() {
-  playerScore = 0
-  computerScore = 0
-}
+function makeSelection(selectionName) {
+  const playerSelection = selectionName
+  const computerSelection = randomSelection()
+  playerChoice.innerText = playerSelection.name
+  computerChoice.innerText = computerSelection.name
 
-function clicked(selection) {
-  if (playerScore === 3 || computerScore === 3) {
-    alert('game over')
-    return restart()
-  }
+  let winner = isWinner(playerSelection, computerSelection)
+  if (playerSelection.name === computerSelection.name) {
+    return
+  } else if (winner) {
+    playerScore.innerText = parseInt(playerScore.innerText) + 1
 
-  if (playerScore < 3 || computerScore < 3) {
-    const playerSelection = selection
-    const computerSelection = computerPlay()
-
-    if (playerSelection === computerSelection) {
-      console.log(`draw. play again! both played ${playerSelection}`)
-    } else if (
-      (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
-      (playerSelection === 'Paper' && computerSelection === 'Rock') ||
-      (playerSelection === 'Scissors' && computerSelection === 'Paper')
-    ) {
-      playerScore += 1
-      playerScoreElement.innerHTML = playerScore
-      console.log(`you win! ${playerSelection} beats ${computerSelection}`)
-    } else {
-      computerScore += 1
-      computerScoreElement.innerHTML = computerScore
-      console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
-    }
+    // if (playerScore.innerText === 3) {
+    //   alert('you win, score will reset')
+    // }
+  } else if (!winner) {
+    computerScore.innerText = parseInt(computerScore.innerText) + 1
   }
 }
 
-function computerPlay() {
-  const random = Math.floor(Math.random() * 3)
-  if (random === 0) {
-    return 'Rock'
-  } else if (random === 1) {
-    return 'Paper'
-  } else {
-    return 'Scissors'
-  }
+function isWinner(playerSelection, computerSelection) {
+  return playerSelection.beats === computerSelection.name
+}
+
+function randomSelection() {
+  const randomIndex = Math.floor(Math.random() * overView.length)
+  return overView[randomIndex]
 }
