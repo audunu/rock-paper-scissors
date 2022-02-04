@@ -7,7 +7,9 @@ const scissorsButton = document.querySelector('#scissors')
 const playerScoreElement = document.querySelector('.playerScore')
 const computerScoreElement = document.querySelector('.computerScore')
 
-rockButton.addEventListener('click', clicked('Rock'))
+rockButton.addEventListener('click', () => {
+  clicked('Rock')
+})
 paperButton.addEventListener('click', clicked('Paper'))
 scissorsButton.addEventListener('click', clicked('Scissors'))
 
