@@ -5,18 +5,18 @@ let computerScore = 0;
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
-const playerScoreElement = document.querySelector('.playerScore')
-const computerScoreElement = document.querySelector('.computerScore')
+const playerScoreElement = document.querySelector('.playerPoints')
+const computerScoreElement = document.querySelector('.computerPoints')
 
-rockButton.addEventListener("click", clicked("Rock"));
-paperButton.addEventListener("click", clicked("Paper"));
-scissorsButton.addEventListener("click", clicked("Scissors"));
+rockButton.addEventListener("click", () => clicked("Rock"));
+paperButton.addEventListener("click", () => clicked("Paper"));
+scissorsButton.addEventListener("click", () => clicked("Scissors"));
 
 
 
 
 function clicked(selection) {
-    if (playerScore < 3 || computerScore < 3) {
+    if (playerScore !== 3 && computerScore !== 3) {
         const playerSelection = selection;
         const computerSelection = computerPlay();
 
