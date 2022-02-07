@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let round = 0;
 
 
 const rockButton = document.querySelector('#rock');
@@ -24,8 +25,15 @@ function changeImage(player, computer) {
     computerImageElement.innerHTML = `<img src="images/${computerLo}.png" alt="rock"></img>`
 }
 
-function changeText(winner) {
-
+function changeText(winner = "noone", winnerSelection, LoserSelection) {
+    if (winner === "noone") {
+        h2Element.innerText = "Draw."
+        h3Element.innerText = `${winnerSelection} ties with ${LoserSelection}`;
+    }
+    else {
+        h2Element.innerText = `${winner} wins round ${round}.`;
+        h3Element.innerText = `${winnerSelection} beats ${LoserSelection}`;
+    }
 }
 
 
@@ -34,24 +42,28 @@ function changeText(winner) {
 function clicked(selection) {
     const playerSelection = selection;
     const computerSelection = computerPlay();
+    round += 1;
 
     if (playerScore !== 3 && computerScore !== 3) {
         changeImage(playerSelection, computerSelection);
-        
-        if (playerSelection === computerSelection) {
 
+        if (playerSelection === computerSelection) {
+            
+            changeText("noone", playerSelection, computerSelection);
             console.log(`draw. play again! both played ${playerSelection}`)
         }
         else if (playerSelection === "Rock" && computerSelection === "Scissors" || playerSelection === "Paper" && computerSelection === "Rock" || playerSelection === "Scissors" && computerSelection === "Paper") {
 
             playerScore += 1;
             playerScoreElement.innerHTML = playerScore;
+            changeText("Player", playerSelection, computerSelection);
             console.log(`you win! ${playerSelection} beats ${computerSelection}`)
         }
         else {
 
             computerScore += 1;
             computerScoreElement.innerHTML = computerScore;
+            changeText("Computer", computerSelection, playerSelection);
             console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
         }
     }
