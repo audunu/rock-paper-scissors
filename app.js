@@ -42,9 +42,6 @@ function changeText(winner = "noone", winnerSelection, LoserSelection) {
     }
 }
 
-
-
-
 function clicked(selection) {
     const playerSelection = selection;
     const computerSelection = computerPlay();
