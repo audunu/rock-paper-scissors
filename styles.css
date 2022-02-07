@@ -14,7 +14,8 @@ header {
 
 .text {
     text-align: center;
-    padding-top: 2em;
+    padding-top: 4em;
+    padding-bottom 4em;
 }
 
 button img {
@@ -33,6 +34,7 @@ button {
     width: 5em;
     height: 5em;
     border-radius: 10px;
+    cursor: pointer;
     
 }
 
@@ -40,14 +42,17 @@ button {
     display: flex;
     justify-content: center;
     gap: 1em;
-    padding-bottom: 2em;
+    padding-top: 4em;
+    padding-bottom: 4em;
+
 }
 
 .results {
     display: flex;
     justify-content: center;
     gap: 2em;
-    padding: 2em;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 
 .resultbox div {

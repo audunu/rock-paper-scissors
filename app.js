@@ -70,12 +70,7 @@ function clicked(selection) {
             changeText("Computer", computerSelection, playerSelection);
         }
     }
-    else if (playerScore === 3) {
-        console.log("player wins total");
-    }
-    else if (computerScore === 3) {
-        console.log("computer wins total");
-    }
+
 }
 
 
