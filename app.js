@@ -5,21 +5,30 @@ let computerScore = 0;
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
-const playerScoreElement = document.querySelector('.playerPoints')
-const computerScoreElement = document.querySelector('.computerPoints')
+const playerScoreElement = document.querySelector('.playerPoints');
+const computerScoreElement = document.querySelector('.computerPoints');
+const playerImageElement = document.querySelector('.playerImage');
+const computerImageElement = document.querySelector('.computerImage');
 
 rockButton.addEventListener("click", () => clicked("Rock"));
 paperButton.addEventListener("click", () => clicked("Paper"));
 scissorsButton.addEventListener("click", () => clicked("Scissors"));
 
 
+function changeImage(player, computer) {
+    const playerLo = player.toLowerCase();
+    const computerLo = computer.toLowerCase();
+    playerImageElement.innerHTML = `<img src="images/${playerLo}.png" alt="rock"></img>`
+    computerImageElement.innerHTML = `<img src="images/${computerLo}.png" alt="rock"></img>`
+}
 
 
 function clicked(selection) {
-    if (playerScore !== 3 && computerScore !== 3) {
-        const playerSelection = selection;
-        const computerSelection = computerPlay();
+    const playerSelection = selection;
+    const computerSelection = computerPlay();
 
+    if (playerScore !== 3 && computerScore !== 3) {
+        
         if (playerSelection === computerSelection) {
 
             console.log(`draw. play again! both played ${playerSelection}`)
@@ -43,9 +52,8 @@ function clicked(selection) {
     else if (computerScore === 3) {
         console.log("computer wins total");
     }
-
-
 }
+
 
 
 
