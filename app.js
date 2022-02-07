@@ -9,6 +9,8 @@ const playerScoreElement = document.querySelector('.playerPoints');
 const computerScoreElement = document.querySelector('.computerPoints');
 const playerImageElement = document.querySelector('.playerImage');
 const computerImageElement = document.querySelector('.computerImage');
+const h2Element = document.querySelector('h2');
+const h3Element = document.querySelector('h3');
 
 rockButton.addEventListener("click", () => clicked("Rock"));
 paperButton.addEventListener("click", () => clicked("Paper"));
@@ -22,12 +24,19 @@ function changeImage(player, computer) {
     computerImageElement.innerHTML = `<img src="images/${computerLo}.png" alt="rock"></img>`
 }
 
+function changeText(winner) {
+
+}
+
+
+
 
 function clicked(selection) {
     const playerSelection = selection;
     const computerSelection = computerPlay();
 
     if (playerScore !== 3 && computerScore !== 3) {
+        changeImage(playerSelection, computerSelection);
         
         if (playerSelection === computerSelection) {
 

@@ -17,15 +17,22 @@ header {
     padding-top: 2em;
 }
 
-img {
+button img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
 
+img {
+    width: 1em;
+    height: 1em;
+    border-radius: 10px;
+}
 
 button {
-    width: 12%;
-    height: 12%;
+    width: 4em;
+    height: 4em;
+    border-radius: 10px;
     
 }
 
