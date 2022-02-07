@@ -26,13 +26,19 @@ function changeImage(player, computer) {
 }
 
 function changeText(winner = "noone", winnerSelection, LoserSelection) {
-    if (winner === "noone") {
-        h2Element.innerText = "Draw."
-        h3Element.innerText = `${winnerSelection} ties with ${LoserSelection}`;
+    if (playerScore === 3 || computerScore === 3) {
+        h2Element.innerText = `Game finished`;
+        h3Element.innerText = `${winner} wins total`;
     }
     else {
-        h2Element.innerText = `${winner} wins round ${round}.`;
-        h3Element.innerText = `${winnerSelection} beats ${LoserSelection}`;
+        if (winner === "noone") {
+            h2Element.innerText = "Draw"
+            h3Element.innerText = `${winnerSelection} ties with ${LoserSelection}`;
+        }
+        else {
+            h2Element.innerText = `${winner} wins round ${round}`;
+            h3Element.innerText = `${winnerSelection} beats ${LoserSelection}`;
+        }
     }
 }
 
@@ -50,21 +56,18 @@ function clicked(selection) {
         if (playerSelection === computerSelection) {
             
             changeText("noone", playerSelection, computerSelection);
-            console.log(`draw. play again! both played ${playerSelection}`)
         }
         else if (playerSelection === "Rock" && computerSelection === "Scissors" || playerSelection === "Paper" && computerSelection === "Rock" || playerSelection === "Scissors" && computerSelection === "Paper") {
 
             playerScore += 1;
             playerScoreElement.innerHTML = playerScore;
             changeText("Player", playerSelection, computerSelection);
-            console.log(`you win! ${playerSelection} beats ${computerSelection}`)
         }
         else {
 
             computerScore += 1;
             computerScoreElement.innerHTML = computerScore;
             changeText("Computer", computerSelection, playerSelection);
-            console.log(`you lose! ${computerSelection} beats ${playerSelection}`)
         }
     }
     else if (playerScore === 3) {
